@@ -52,7 +52,7 @@ function App() {
     accept: "image/*",
     maxFiles: 1,
     onDrop,
-    maxSize: 5e+6,
+    maxSize: 5e6,
   });
 
   /* DROPZONE STYLING */
@@ -98,22 +98,24 @@ function App() {
             {/* IMAGE PREVIEW */}
             <img src={src} alt="uploaded-file" width="500" />
             {/* Hide buttons when loading result */}
-            {!loading && <div>
-              <button
-                onClick={() => {
-                  setResult(null);
-                  setSrc("");
-                }}
-              >
-                Clear
-              </button>
-              {/* Hide submit button if request is sent */}
-              {!result && (
-                <button style={{ marginLeft: 10 }} onClick={onSubmit}>
-                  Submit
+            {!loading && (
+              <div>
+                <button
+                  onClick={() => {
+                    setResult(null);
+                    setSrc("");
+                  }}
+                >
+                  Clear
                 </button>
-              )}
-            </div>}
+                {/* Hide submit button if request is sent */}
+                {!result && (
+                  <button style={{ marginLeft: 10 }} onClick={onSubmit}>
+                    Submit
+                  </button>
+                )}
+              </div>
+            )}
             {/* Result */}
             {result && (
               <p>
@@ -126,7 +128,16 @@ function App() {
               </p>
             )}
             {/* Loading */}
-            {loading && (<p>Hold your horses...</p>)}
+            {loading && (
+              <>
+                <p>Hold your horses...</p>
+                <small>
+                  It might take ages for a response when a cold start of the API occurs
+                  (otherwise it's decent)
+                </small>
+                <p></p>
+              </>
+            )}
           </div>
         ) : (
           <section className="container">
@@ -135,7 +146,9 @@ function App() {
               {isDragActive ? (
                 <p>Drop the file here</p>
               ) : (
-                <p>Drag 'n' drop an image here, or click to select (Max. 5MB)</p>
+                <p>
+                  Drag and drop or click to select (max size: 5MB)
+                </p>
               )}
             </div>
           </section>
