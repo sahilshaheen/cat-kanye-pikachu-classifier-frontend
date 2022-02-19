@@ -52,6 +52,7 @@ function App() {
     accept: "image/*",
     maxFiles: 1,
     onDrop,
+    maxSize: 5e+6,
   });
 
   /* DROPZONE STYLING */
@@ -95,7 +96,7 @@ function App() {
         {src ? (
           <div>
             {/* IMAGE PREVIEW */}
-            <img src={src} alt="uploaded-file" />
+            <img src={src} alt="uploaded-file" width="500" />
             {/* Hide buttons when loading result */}
             {!loading && <div>
               <button
@@ -134,7 +135,7 @@ function App() {
               {isDragActive ? (
                 <p>Drop the file here</p>
               ) : (
-                <p>Drag 'n' drop an image here, or click to select</p>
+                <p>Drag 'n' drop an image here, or click to select (Max. 5MB)</p>
               )}
             </div>
           </section>
