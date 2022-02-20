@@ -96,7 +96,7 @@ function App() {
         {src ? (
           <div>
             {/* IMAGE PREVIEW */}
-            <img src={src} alt="uploaded-file" width="500" />
+            <img src={src} alt="uploaded-file" className="preview" />
             {/* Hide buttons when loading result */}
             {!loading && (
               <div>

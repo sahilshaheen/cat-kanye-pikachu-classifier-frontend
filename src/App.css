@@ -6,6 +6,11 @@ small {
   text-align: center;
 }
 
+.preview {
+  max-width: 600px;
+  width: 100%;
+}
+
 .main {
   background-color: #fff;
   min-height: 100vh;
